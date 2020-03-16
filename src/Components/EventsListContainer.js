@@ -2,22 +2,36 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EventsList from "./EventsList";
 import { showAllEvents } from "../Actions/eventActions";
+import LoginFormContainer from "./LoginFormContainer";
+import CreateNewEventContainer from "./CreateNewEventContainer";
 
 export class EventsListContainer extends Component {
   componentDidMount() {
     this.props.showAllEvents();
   }
   render() {
-    return (
-      <div>
-        <EventsList events={this.props.events} />
-      </div>
-    );
+    console.log(this.props.users);
+    if (!this.props.users) {
+      return (
+        <div>
+          <EventsList events={this.props.events} />
+          <LoginFormContainer />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <EventsList events={this.props.events} />
+          <CreateNewEventContainer />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
-  events: state.events
+  events: state.events,
+  users: state.users
 });
 
 const mapDispatchToProps = {

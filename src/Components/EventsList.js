@@ -1,17 +1,22 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class EventsList extends Component {
   render() {
+    console.log("from", this.props.events);
     if (this.props.events) {
       return (
         <div>
           {this.props.events.map(event => (
             <div>
-              <h1>{event.name}</h1>
-              <h3>{event.description}</h3>
-              <image src={event.url} />
-              <h4>{event.startDate}</h4>
-              <h4>{event.endDate}</h4>
+              <h1>
+                <Link to={`/events/${event.id}`}>{event.name}</Link>
+              </h1>
+              <h3>DESCRIPTION: {event.description}</h3>
+              <img src={event.url} />
+              <h4>START DATE: {event.startDate}</h4>
+              <h4>END DATE: {event.endDate}</h4>
+              <h4></h4>
             </div>
           ))}
         </div>

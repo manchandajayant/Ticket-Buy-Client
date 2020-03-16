@@ -1,6 +1,9 @@
 import request from "superagent";
 
 export const EVENTS_FETCHED = "EVENTS_FETCHED";
+export const NEW_EVENT = "NEW_EVENT";
+
+export const EVENT_FETCHED = "EVENT_FETCHED";
 
 const baseUrl = "http://localhost:4000";
 
@@ -17,6 +20,42 @@ export const showAllEvents = () => (dispatch, getState) => {
     request(`${baseUrl}/event`)
       .then(res => {
         const action = allEventsFetched(res.body);
+        dispatch(action);
+      })
+      .catch(console.error);
+  }
+};
+
+const newEventCreated = events => ({
+  type: NEW_EVENT,
+  payload: events
+});
+
+export const newEvent = data => dispatch => {
+  request
+    .post(`${baseUrl}/event`)
+    .send(data)
+    .then(res => {
+      const action = newEventCreated(res.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
+const singleEvent = event => ({
+  type: EVENT_FETCHED,
+  payload: event
+});
+
+export const fetchEvent = id => (dispatch, getState) => {
+  const state = getState();
+  const { event } = state;
+  if (!event.length) {
+    request
+      .get(`${baseUrl}/event/${id}`)
+      .send(id)
+      .then(res => {
+        const action = singleEvent(res.body);
         dispatch(action);
       })
       .catch(console.error);
