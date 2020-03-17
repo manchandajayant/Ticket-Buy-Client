@@ -30,7 +30,7 @@ export class EventsListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
+  events: state.events.events,
   users: state.users
 });
 

@@ -22,12 +22,12 @@ export const newTicket = data => dispatch => {
     .catch(console.error);
 };
 
-const singleTicket = event => ({
+const singleTicket = ticket => ({
   type: FETCH_TICKET,
-  payload: event
+  payload: ticket
 });
 
-export const fetchTicket = id => dispatch => {
+export const fetchTicket = id => (dispatch, getState) => {
   request
     .get(`${baseUrl}/ticket/${id}`)
     .send(id)
@@ -35,6 +35,7 @@ export const fetchTicket = id => dispatch => {
       console.log(res.body);
       const action = singleTicket(res.body);
       dispatch(action);
+      // console.log("in action", res.body);
     })
     .catch(console.error);
 };

@@ -6,8 +6,8 @@ import NewTicketContainer from "./NewTicketContainer";
 
 export class EventDetailContainer extends Component {
   componentDidMount() {
-    console.log("this", this.props.match.params.id);
     this.props.fetchEvent(Number(this.props.match.params.id));
+    console.log("this", this.props.event);
   }
   render() {
     console.log("det", this.props.event);

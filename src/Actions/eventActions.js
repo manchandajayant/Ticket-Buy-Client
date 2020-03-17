@@ -31,7 +31,9 @@ const newEventCreated = events => ({
   payload: events
 });
 
-export const newEvent = data => dispatch => {
+export const newEvent = data => (dispatch, getState) => {
+  const state = getState();
+  const { events } = state;
   request
     .post(`${baseUrl}/event`)
     .send(data)

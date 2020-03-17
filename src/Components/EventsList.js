@@ -9,6 +9,7 @@ export default class EventsList extends Component {
         <div>
           {this.props.events.map(event => (
             <div>
+              <ul key={event.id}></ul>
               <h1>
                 <Link to={`/events/${event.id}`}>{event.name}</Link>
               </h1>

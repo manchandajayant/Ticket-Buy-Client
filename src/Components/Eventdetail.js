@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 
 export default class Eventdetail extends Component {
   render() {
-    console.log(this.props.event);
+    console.log("bllue", this.props.event);
     if (!this.props.event) {
       return <h1>No tickets yet</h1>;
     } else {
       return (
         <div>
+          <Link to="/">HOMEPAGE</Link>
           <div>
             <h1>{this.props.event.event.name}</h1>
             <h3>DESCRIPTION: {this.props.event.event.description}</h3>

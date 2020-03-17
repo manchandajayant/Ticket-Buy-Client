@@ -3,19 +3,19 @@ import {
   NEW_EVENT,
   EVENT_FETCHED
 } from "../Actions/eventActions";
-const initialState = [];
+const initialState = { events: [] };
 
-export default function eventReducer(state = initialState, action) {
+export default function eventsReducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
     case EVENTS_FETCHED: {
-      return action.payload;
+      return { ...state, events: action.payload };
     }
     case NEW_EVENT: {
-      return [...state, action.payload];
+      return { ...state, events: [action.payload, ...state.events] };
     }
     case EVENT_FETCHED: {
-      return action.payload;
+      return { event: action.payload };
     }
     default: {
       return state;

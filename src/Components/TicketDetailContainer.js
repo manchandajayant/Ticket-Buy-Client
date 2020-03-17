@@ -9,7 +9,7 @@ export class TicketDetailContainer extends Component {
     this.props.fetchTicket(Number(this.props.match.params.id));
   }
   render() {
-    console.log("ticket b", this.props.ticket);
+    console.log("ticket b", this.props);
     return (
       <div>
         <TicketDetail ticket={this.props.ticket} />

@@ -1,17 +1,11 @@
-import {
-  NEW_TICKET,
-  FETCH_TICKET,
-  TICKETS_FETCHED
-} from "../Actions/eventActions";
+import { FETCH_TICKET, TICKETS_FETCHED } from "../Actions/ticketActions";
 const initialState = null;
 
-export default function eventReducer(state = initialState, action) {
+export default function ticketReducer(state = initialState, action) {
   console.log(action);
   switch (action.type) {
-    case NEW_TICKET: {
-      return [...state, action.payload];
-    }
     case FETCH_TICKET: {
+      console.log(action.payload);
       return { ticket: action.payload };
     }
     case TICKETS_FETCHED: {
