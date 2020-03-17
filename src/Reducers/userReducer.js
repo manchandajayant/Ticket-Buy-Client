@@ -1,4 +1,4 @@
-import { JWT, NEW_USER } from "../Actions/userActions";
+import { JWT, NEW_USER, USER_FETCHED } from "../Actions/userActions";
 const initialState = "";
 
 export default function userReducer(state = initialState, action) {
@@ -9,6 +9,10 @@ export default function userReducer(state = initialState, action) {
     }
     case NEW_USER: {
       return [...state, action.payload];
+    }
+    case USER_FETCHED: {
+      console.log(action.payload);
+      return { user: action.payload };
     }
     default: {
       return state;

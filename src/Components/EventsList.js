@@ -16,7 +16,6 @@ export default class EventsList extends Component {
               <img src={event.url} />
               <h4>START DATE: {event.startDate}</h4>
               <h4>END DATE: {event.endDate}</h4>
-              <h4></h4>
             </div>
           ))}
         </div>

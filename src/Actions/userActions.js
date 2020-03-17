@@ -2,6 +2,7 @@ import request from "superagent";
 
 export const JWT = "JWT";
 export const NEW_USER = "NEW_USER";
+export const USER_FETCHED = "USER_FETCHED";
 
 const baseUrl = "http://localhost:4000";
 
@@ -37,6 +38,23 @@ export const signUpUser = data => dispatch => {
     .send(data)
     .then(res => {
       const action = newSignUp(res.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
+const singleUser = event => ({
+  type: USER_FETCHED,
+  payload: event
+});
+
+export const fetchUser = id => (dispatch, getState) => {
+  request
+    .get(`${baseUrl}/user/${id}`)
+    .send(id)
+    .then(res => {
+      console.log(res.body);
+      const action = singleUser(res.body);
       dispatch(action);
     })
     .catch(console.error);

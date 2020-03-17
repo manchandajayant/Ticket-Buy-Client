@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEvent } from "../Actions/eventActions";
 import EventDetail from "./Eventdetail";
+import NewTicketContainer from "./NewTicketContainer";
 
 export class EventDetailContainer extends Component {
   componentDidMount() {
@@ -9,7 +10,13 @@ export class EventDetailContainer extends Component {
     this.props.fetchEvent(Number(this.props.match.params.id));
   }
   render() {
-    return <EventDetail event={this.props.event} />;
+    console.log("det", this.props.event);
+    return (
+      <div>
+        <EventDetail event={this.props.event} />
+        <NewTicketContainer />
+      </div>
+    );
   }
 }
 

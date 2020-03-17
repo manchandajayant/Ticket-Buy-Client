@@ -48,16 +48,13 @@ const singleEvent = event => ({
 });
 
 export const fetchEvent = id => (dispatch, getState) => {
-  const state = getState();
-  const { event } = state;
-  if (!event.length) {
-    request
-      .get(`${baseUrl}/event/${id}`)
-      .send(id)
-      .then(res => {
-        const action = singleEvent(res.body);
-        dispatch(action);
-      })
-      .catch(console.error);
-  }
+  request
+    .get(`${baseUrl}/event/${id}`)
+    .send(id)
+    .then(res => {
+      console.log(res.body);
+      const action = singleEvent(res.body);
+      dispatch(action);
+    })
+    .catch(console.error);
 };
