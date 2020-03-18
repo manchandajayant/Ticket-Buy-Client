@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 
 export default class EventsList extends Component {
   render() {
-    console.log("from", this.props.events);
-    if (this.props.events) {
+    //console.log("from", this.props.events);
+    if (!this.props.events) {
+      return <h1>Loading....</h1>;
+    } else {
       return (
         <div>
           {this.props.events.map(event => (
@@ -21,8 +23,6 @@ export default class EventsList extends Component {
           ))}
         </div>
       );
-    } else {
-      return <h1>Loading....</h1>;
     }
   }
 }

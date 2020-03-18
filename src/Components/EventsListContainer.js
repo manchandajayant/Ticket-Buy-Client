@@ -14,14 +14,14 @@ export class EventsListContainer extends Component {
     if (!this.props.user.auth) {
       return (
         <div>
-          <EventsList events={this.props.events} />
+          <EventsList events={this.props.events.eventsList} />
           <Link to="/login">Login to Add a Ticket</Link>
         </div>
       );
     } else {
       return (
         <div>
-          <EventsList events={this.props.events} />
+          <EventsList events={this.props.events.eventsList} />
           <CreateNewEventContainer />
         </div>
       );
@@ -30,7 +30,7 @@ export class EventsListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events.events,
+  events: state.events,
   user: state.users
 });
 

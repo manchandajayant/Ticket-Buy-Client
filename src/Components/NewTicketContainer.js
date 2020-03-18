@@ -8,8 +8,8 @@ export class CreateNewEventContainer extends Component {
     price: "",
     description: "",
     url: "",
-    eventId: this.props.event.id,
-    userId: this.props.users.id
+    eventId: this.props.event.event.id,
+    userId: this.props.user.loggedInUser
   };
 
   onChange = event => {
@@ -31,24 +31,21 @@ export class CreateNewEventContainer extends Component {
     });
   };
   render() {
-    // console.log("in new", this.props.event);
-    if (this.props.event) {
-      return (
-        <div>
-          <NewTicket
-            onSubmit={this.onSubmit}
-            onChange={this.onChange}
-            values={this.state}
-          />
-        </div>
-      );
-    } else {
-      return <h1>return hi</h1>;
-    }
+    console.log("in new", this.props.event.event.id);
+
+    return (
+      <div>
+        <NewTicket
+          onSubmit={this.onSubmit}
+          onChange={this.onChange}
+          values={this.state}
+        />
+      </div>
+    );
   }
 }
 const mapStateToProps = state => ({
-  users: state.users,
+  user: state.users,
   tickets: state.tickets
 });
 

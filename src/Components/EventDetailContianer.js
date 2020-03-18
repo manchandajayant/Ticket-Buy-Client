@@ -10,8 +10,8 @@ export class EventDetailContainer extends Component {
     console.log("this", this.props.event);
   }
   render() {
-    console.log("det", this.props.users);
-    if (!this.props.users) {
+    console.log("det", this.props.event);
+    if (!this.props.user.auth) {
       return (
         <div>
           <EventDetail event={this.props.event} />
@@ -31,7 +31,7 @@ export class EventDetailContainer extends Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  users: state.users
+  user: state.users
 });
 
 const mapDispatchToProps = {
