@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SignUpForm from "./SignUpForm";
 import { connect } from "react-redux";
 import { signUpUser } from "../Actions/userActions";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 
 export class SignUpFormContainer extends Component {
   state = {
@@ -25,8 +25,8 @@ export class SignUpFormContainer extends Component {
     });
   };
   render() {
-    console.log(this.props.users);
-    if (!this.props.users) {
+    console.log(this.props.user);
+    if (!this.props.user.newUser) {
       return (
         <div>
           <SignUpForm
@@ -39,15 +39,15 @@ export class SignUpFormContainer extends Component {
     } else {
       return (
         <div>
-          <h1>You have signed up {this.props.users[0].email}</h1>
-          <Link to="/">CLICK HERE TO GO TO HOMEPAGE</Link>
+          {/* <h1>You have signed up {this.props.users[0].email}</h1> */}
+          <Redirect to="/login">CLICK HERE TO LOGIN</Redirect>
         </div>
       );
     }
   }
 }
 const mapStateToProps = state => ({
-  users: state.users
+  user: state.users
 });
 
 const mapDispatchToProps = {

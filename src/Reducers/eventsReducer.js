@@ -15,7 +15,7 @@ export default function eventsReducer(state = initialState, action) {
       return { ...state, events: [action.payload, ...state.events] };
     }
     case EVENT_FETCHED: {
-      return { event: action.payload };
+      return { events: action.payload };
     }
     default: {
       return state;

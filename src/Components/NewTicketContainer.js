@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import NewTicket from "./NewTicket";
 import { connect } from "react-redux";
 import { newTicket } from "../Actions/ticketActions";
-import { fetchUser } from "../Actions/userActions";
 
 export class CreateNewEventContainer extends Component {
   state = {
     price: "",
     description: "",
     url: "",
-    eventId: "",
-    userId: ""
+    eventId: this.props.event.id,
+    userId: this.props.users.id
   };
 
   onChange = event => {
@@ -26,13 +25,13 @@ export class CreateNewEventContainer extends Component {
     this.setState({
       price: "",
       description: "",
-      url: ""
-      // eventId: this.props.event.eventId,
-      // userId: this.props.user.userId
+      url: "",
+      eventId: this.state.eventId,
+      userId: this.state.userId
     });
   };
   render() {
-    console.log(this.props.event);
+    // console.log("in new", this.props.event);
     if (this.props.event) {
       return (
         <div>
@@ -40,7 +39,6 @@ export class CreateNewEventContainer extends Component {
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             values={this.state}
-            event={this.props.event}
           />
         </div>
       );
@@ -49,9 +47,16 @@ export class CreateNewEventContainer extends Component {
     }
   }
 }
+const mapStateToProps = state => ({
+  users: state.users,
+  tickets: state.tickets
+});
 
 const mapDispatchToProps = {
   newTicket
 };
 
-export default connect(null, mapDispatchToProps)(CreateNewEventContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateNewEventContainer);

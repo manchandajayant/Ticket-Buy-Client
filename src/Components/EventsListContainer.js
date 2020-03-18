@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EventsList from "./EventsList";
 import { showAllEvents } from "../Actions/eventActions";
-import LoginFormContainer from "./LoginFormContainer";
+import { Link } from "react-router-dom";
 import CreateNewEventContainer from "./CreateNewEventContainer";
 
 export class EventsListContainer extends Component {
@@ -10,12 +10,12 @@ export class EventsListContainer extends Component {
     this.props.showAllEvents();
   }
   render() {
-    console.log(this.props.users);
-    if (!this.props.users) {
+    //console.log(this.props.user.auth);
+    if (!this.props.user.auth) {
       return (
         <div>
           <EventsList events={this.props.events} />
-          <LoginFormContainer />
+          <Link to="/login">Login to Add a Ticket</Link>
         </div>
       );
     } else {
@@ -31,7 +31,7 @@ export class EventsListContainer extends Component {
 
 const mapStateToProps = state => ({
   events: state.events.events,
-  users: state.users
+  user: state.users
 });
 
 const mapDispatchToProps = {

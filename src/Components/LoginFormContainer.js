@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
 import { login } from "../Actions/userActions";
+import { Redirect } from "react-router-dom";
 
 export class LoginFormContainer extends Component {
   state = { email: "", password: "" };
@@ -9,6 +10,10 @@ export class LoginFormContainer extends Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.login(this.state);
+    this.setState({
+      email: "",
+      password: ""
+    });
   };
 
   onChange = event => {
@@ -17,20 +22,29 @@ export class LoginFormContainer extends Component {
     });
   };
   render() {
-    return (
-      <div>
-        <LoginForm
-          onSubmit={this.onSubmit}
-          onChange={this.onChange}
-          values={this.state}
-        />
-      </div>
-    );
+    console.log("user", this.props);
+    if (this.props.user.auth) {
+      return <Redirect to="/"></Redirect>;
+    } else {
+      return (
+        <div>
+          <LoginForm
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+        </div>
+      );
+    }
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.users
+});
 
 const mapDispatchToProps = {
   login
 };
 
-export default connect(null, mapDispatchToProps)(LoginFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginFormContainer);

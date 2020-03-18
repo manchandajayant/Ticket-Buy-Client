@@ -6,12 +6,14 @@ export const TICKETS_FETCHED = "TICKETS_FETCHED";
 
 const baseUrl = "http://localhost:4000";
 
-const newTicketCreated = events => ({
+const newTicketCreated = ticket => ({
   type: NEW_TICKET,
-  payload: events
+  payload: ticket
 });
 
-export const newTicket = data => dispatch => {
+export const newTicket = data => (dispatch, getState) => {
+  const state = getState();
+  const { ticket } = state;
   request
     .post(`${baseUrl}/ticket`)
     .send(data)
