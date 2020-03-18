@@ -60,3 +60,15 @@ export const fetchEvent = id => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+// export const fetchEvent = id => {
+//   return async function(dispatch) {
+//     try {
+//       const res = await superagent.get(`${baseUrl}/event/${id}`).send(id);
+//       const action = singleEvent(res.body);
+//       dispatch(action);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+// };

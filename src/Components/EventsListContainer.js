@@ -10,7 +10,7 @@ export class EventsListContainer extends Component {
     this.props.showAllEvents();
   }
   render() {
-    //console.log(this.props.user.auth);
+    console.log("to", this.props.events);
     if (!this.props.user.auth) {
       return (
         <div>
