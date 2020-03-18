@@ -9,12 +9,20 @@ export class UserProfileContainer extends Component {
   }
   render() {
     console.log("hi", this.props.user);
-    return <div>HI</div>;
+    if (this.props.user) {
+      return (
+        <div>
+          <p>{this.props.user.email}</p>
+        </div>
+      );
+    } else {
+      return <div>Nothing to return</div>;
+    }
   }
 }
 
 const mapStateToProps = state => ({
-  user: state.users.user
+  user: state.users.fetchedUser
 });
 
 const mapDispatchToProps = {

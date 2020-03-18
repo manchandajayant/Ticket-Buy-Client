@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default class LoginForm extends Component {
   render() {
+    console.log(this.props.onSubmit);
     return (
       <div>
         <form onSubmit={this.props.onSubmit}>

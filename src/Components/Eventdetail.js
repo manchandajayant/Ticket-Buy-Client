@@ -21,11 +21,11 @@ export default class Eventdetail extends Component {
               return (
                 <li>
                   <ul>
-                    <Link to={`/users/${d.userId}`}>User</Link>
+                    <Link to={`/users/${d.userId}`}>Ticket by</Link>
                     {d.price}
                   </ul>
                   <p>
-                    <Link to={`/tickets/${d.id}`}>
+                    <Link to={`/tickets/${d.eventId}`}>
                       Click to open the Ticket
                     </Link>
                   </p>
