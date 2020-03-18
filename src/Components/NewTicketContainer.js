@@ -32,30 +32,26 @@ export class CreateNewEventContainer extends Component {
     });
   };
   render() {
-    //console.log("tick", this.props.user);
-    console.log("tick2", this.props.event);
-    return (
-      <div>
-        <NewTicket
-          onSubmit={this.onSubmit}
-          onChange={this.onChange}
-          values={this.state}
-        />
-      </div>
-    );
+    console.log(this.props.event);
+    if (this.props.event) {
+      return (
+        <div>
+          <NewTicket
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+            event={this.props.event}
+          />
+        </div>
+      );
+    } else {
+      return <h1>return hi</h1>;
+    }
   }
 }
-const mapStateToProps = state => ({
-  event: state.event,
-  user: state.user
-});
 
 const mapDispatchToProps = {
-  newTicket,
-  fetchUser
+  newTicket
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateNewEventContainer);
+export default connect(null, mapDispatchToProps)(CreateNewEventContainer);

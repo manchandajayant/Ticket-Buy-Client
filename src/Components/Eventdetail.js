@@ -20,9 +20,14 @@ export default class Eventdetail extends Component {
             {this.props.event.event.tickets.map(d => {
               return (
                 <li>
-                  <ul>Ticket:{d.price}</ul>
+                  <ul>
+                    <Link to={`/users/${d.userId}`}>User</Link>
+                    {d.price}
+                  </ul>
                   <p>
-                    <Link to={`/tickets/${d.id}`}>Click to open</Link>
+                    <Link to={`/tickets/${d.id}`}>
+                      Click to open the Ticket
+                    </Link>
                   </p>
                 </li>
               );

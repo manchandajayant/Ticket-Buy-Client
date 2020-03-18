@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 export default class NewTicket extends Component {
   render() {
+    console.log("lof");
     return (
       <div>
         <div>

@@ -10,18 +10,28 @@ export class EventDetailContainer extends Component {
     console.log("this", this.props.event);
   }
   render() {
-    console.log("det", this.props.event);
-    return (
-      <div>
-        <EventDetail event={this.props.event} />
-        <NewTicketContainer />
-      </div>
-    );
+    console.log("det", this.props.users);
+    if (!this.props.users) {
+      return (
+        <div>
+          <EventDetail event={this.props.event} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {" "}
+          <EventDetail event={this.props.event} />
+          <NewTicketContainer event={this.props.event} />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
-  event: state.event
+  event: state.event,
+  users: state.users
 });
 
 const mapDispatchToProps = {

@@ -8,11 +8,14 @@ export class UserProfileContainer extends Component {
     this.props.fetchUser(Number(this.props.match.params.id));
   }
   render() {
+    console.log("hi", this.props.user);
     return <div>HI</div>;
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  user: state.users.user
+});
 
 const mapDispatchToProps = {
   fetchUser

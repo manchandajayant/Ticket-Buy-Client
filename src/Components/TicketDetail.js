@@ -12,11 +12,6 @@ export default class Eventdetail extends Component {
           <h1>PRICE:{this.props.ticket.ticket.price}</h1>
           <h2>DETAILS:{this.props.ticket.ticket.description}</h2>
           <img src={this.props.ticket.ticket.url} />
-          <h3>
-            <Link to={`/users/${this.props.ticket.ticket.user.id}`}>
-              CREATED BY:{this.props.ticket.ticket.user.email}
-            </Link>
-          </h3>
         </div>
       );
     }
