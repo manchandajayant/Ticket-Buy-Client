@@ -10,7 +10,7 @@ const newCommentCreated = comment => ({
   payload: comment
 });
 
-export const newTicket = data => (dispatch, getState) => {
+export const newComment = data => (dispatch, getState) => {
   const state = getState();
   const { comment } = state;
   request
@@ -22,18 +22,17 @@ export const newTicket = data => (dispatch, getState) => {
     })
     .catch(console.error);
 };
-const fetchCommentsById = comment => ({
+const fetchAllComments = comment => ({
   type: FETCH_COMMENTS,
   payload: comment
 });
 
-export const fetchComments = ticketId => (dispatch, getState) => {
+export const fetchComments = () => (dispatch, getState) => {
   request
-    .get(`${baseUrl}/comment/${ticketId}`)
-    .send(ticketId)
+    .get(`${baseUrl}/comment`)
     .then(res => {
       console.log(res.body);
-      const action = fetchCommentsById(res.body);
+      const action = fetchAllComments(res.body);
       dispatch(action);
       // console.log("comments", res.body);
     })

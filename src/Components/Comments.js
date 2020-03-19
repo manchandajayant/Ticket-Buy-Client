@@ -7,7 +7,7 @@ export default class Comments extends Component {
         <form onSubmit={this.props.onSubmit}>
           <input
             type="text"
-            name="comment"
+            name="description"
             placeholder="comment"
             onChange={this.props.onChange}
             values={this.props.values}
