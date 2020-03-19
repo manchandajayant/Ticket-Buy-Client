@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import { connect } from "react-redux";
 
 export class CommentsContianer extends Component {
+  componentDidMount() {}
   state = { comment: "" };
   onSubmit = event => {
     event.preventDefault();
@@ -20,8 +21,13 @@ export class CommentsContianer extends Component {
     });
   };
   render() {
+    console.log("blue", this.props);
     return (
       <div>
+        Comments:
+        {this.props.ticket.ticket.comments.map(comment => (
+          <p>{comment.description}</p>
+        ))}
         <Comments
           onSubmit={this.onSubmit}
           onChange={this.onChange}

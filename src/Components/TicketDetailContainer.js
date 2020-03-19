@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchTicket } from "../Actions/ticketActions";
 import { fetchUser } from "../Actions/userActions";
+
 import TicketDetail from "./TicketDetail";
 
 export class TicketDetailContainer extends Component {
   state = {
     risk: null,
     riskByAverage: 0,
-    riskByTickets: 0
+    riskByTickets: 0,
+    riskByComments: 0
   };
   componentDidMount() {
-    console.log("this", this.props.ticket);
+    console.log("this", this.props);
     this.props.fetchTicket(Number(this.props.match.params.id));
   }
 
   riskCalculator = () => {
-    console.log("clli");
-
     const x = this.props.event.event.tickets.map(p => {
       return parseInt(p.price);
     });
@@ -40,19 +40,25 @@ export class TicketDetailContainer extends Component {
     if (userTicketsLength < 1) {
       this.state.riskByTickets = 5;
     }
-    const q =
-      this.state.risk + this.state.riskByTickets + this.state.riskByAverage;
-    if (q > 95) {
+    if (this.props.ticket.ticket.comments.length < 3) {
+      this.state.riskByComments = 5;
+    }
+    const totalRisk =
+      this.state.risk +
+      this.state.riskByTickets +
+      this.state.riskByAverage +
+      this.state.riskByComments;
+    if (totalRisk > 95) {
       return this.setState({ risk: 95 });
-    } else if (q < 5) {
+    } else if (totalRisk < 5) {
       return this.setState({ risk: 5 });
     } else {
-      return this.setState({ risk: q });
+      return this.setState({ risk: totalRisk });
     }
   };
 
   render() {
-    console.log("ticket b", this.props.ticket);
+    //console.log("ticket b", this.props.ticket);
     return (
       <div>
         <p>Risk = {this.state.risk} %</p>

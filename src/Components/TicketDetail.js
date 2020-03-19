@@ -18,7 +18,7 @@ export default class Ticketdetail extends Component {
           <h3>{this.props.ticket.ticket.user.email}</h3>
           <img src={this.props.ticket.ticket.url} />
 
-          <CommentsContianer />
+          <CommentsContianer ticket={this.props.ticket} />
         </div>
       );
     }
