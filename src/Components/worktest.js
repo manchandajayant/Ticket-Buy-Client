@@ -1,22 +1,29 @@
-const x = this.this.props.event.event.tickets.map(p => {
-  return p.price;
-});
-const y = x.reduce((acc, curr) => {
-  return acc + curr / x.length;
-});
+export const riskCalculator = () => {
+  console.log("clli");
 
-if (this.props.ticket.ticket.price < y) {
-  const a = y - this.props.ticket.ticket.price + this.state.risk;
-  a > 95 ? 95 : a;
-  return this.setState({
-    risk: a
+  const x = this.props.event.event.tickets.map(p => {
+    return parseInt(p.price);
   });
-} else if (this.props.ticket.ticket.price > y) {
-  const z = this.props.ticket.price - y;
-  z > 10 ? 10 : z;
-  return this.setState({
-    risk: this.state.risk - z
-  });
-} else if (this.props.ticket.ticket.user.tickets.length < 1) {
-  return this.setState({ risk: this.state.risk + 10 });
-}
+  const y = x.reduce((acc, curr) => {
+    console.log("avg", x);
+    return acc + curr / x.length;
+  }, 0);
+  const ticketPrice = parseInt(this.props.ticket.ticket.price);
+
+  console.log("cl", ticketPrice);
+  if (ticketPrice < y) {
+    this.state.riskByAverage = y - ticketPrice;
+  } else if (ticketPrice > y) {
+    const z = ticketPrice - y;
+    const t = z > 10 ? 10 : z;
+    this.state.riskByAverage = t;
+  }
+  const f = this.props.ticket.ticket.user.tickets.length;
+  console.log("r");
+  if (f < 20) {
+    this.state.riskByTickets = 5;
+  }
+  const q =
+    this.state.risk + this.state.riskByTickets + this.state.riskByAverage;
+  this.setState({ risk: q });
+};

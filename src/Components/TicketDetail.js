@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import CommentsContianer from "./CommentsContianer";
 
 export default class Ticketdetail extends Component {
+  // componentDidMount() {
+  //   this.props.risk;
+  // }
   render() {
     console.log("iindetail", this.props);
     if (!this.props.ticket) {

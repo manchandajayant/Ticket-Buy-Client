@@ -6,7 +6,9 @@ import TicketDetail from "./TicketDetail";
 
 export class TicketDetailContainer extends Component {
   state = {
-    risk: 5
+    risk: null,
+    riskByAverage: 0,
+    riskByTickets: 0
   };
   componentDidMount() {
     console.log("this", this.props.ticket);
@@ -15,6 +17,7 @@ export class TicketDetailContainer extends Component {
 
   riskCalculator = () => {
     console.log("clli");
+
     const x = this.props.event.event.tickets.map(p => {
       return parseInt(p.price);
     });
@@ -22,31 +25,40 @@ export class TicketDetailContainer extends Component {
       console.log("avg", x);
       return acc + curr / x.length;
     }, 0);
-    const foo = parseInt(this.props.ticket.ticket.price);
-    console.log("cl", foo);
-    if (foo < y) {
-      const a = y - foo + this.state.risk;
-      const b = a > 95 ? 95 : a;
-      console.log("in", a);
-      return this.setState({
-        risk: b
-      });
-    } else if (foo > y) {
-      const z = foo - y;
+    const ticketPrice = parseInt(this.props.ticket.ticket.price);
+
+    console.log("cl", ticketPrice);
+    if (ticketPrice < y) {
+      this.state.riskByAverage = y - ticketPrice;
+    } else if (ticketPrice > y) {
+      const z = ticketPrice - y;
       const t = z > 10 ? 10 : z;
-      const u = t < 5 ? 5 : t;
-      return this.setState({
-        risk: u - this.state.risk
-      });
+      this.state.riskByAverage = t;
+    }
+    const userTicketsLength = this.props.ticket.ticket.user.tickets.length;
+    console.log("r");
+    if (userTicketsLength < 1) {
+      this.state.riskByTickets = 5;
+    }
+    const q =
+      this.state.risk + this.state.riskByTickets + this.state.riskByAverage;
+    if (q > 95) {
+      return this.setState({ risk: 95 });
+    } else if (q < 5) {
+      return this.setState({ risk: 5 });
+    } else {
+      return this.setState({ risk: q });
     }
   };
 
   render() {
-    console.log("ticket b", this.state.risk);
+    console.log("ticket b", this.props.ticket);
     return (
       <div>
-        <p>{this.state.risk}</p>
-        <button onClick={this.riskCalculator}>Click</button>
+        <p>Risk = {this.state.risk} %</p>
+        <button onClick={this.riskCalculator}>
+          Click To Check the Risk Level
+        </button>
         <TicketDetail
           ticket={this.props.ticket}
           user={this.props.user}
