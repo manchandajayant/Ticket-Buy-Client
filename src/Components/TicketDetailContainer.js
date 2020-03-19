@@ -8,29 +8,48 @@ export class TicketDetailContainer extends Component {
   state = {
     risk: 5
   };
+  componentDidMount() {
+    console.log("this", this.props.ticket);
+    this.props.fetchTicket(Number(this.props.match.params.id));
+  }
 
   riskCalculator = () => {
-    if (this.props.ticket.ticket.user.tickets.length < 30) {
-      return this.setState({ risk: this.state.risk + 1 });
-    } else {
-      return this.setState({ risk: 5 });
+    console.log("clli");
+    const x = this.props.event.event.tickets.map(p => {
+      return parseInt(p.price);
+    });
+    const y = x.reduce((acc, curr) => {
+      console.log("avg", x);
+      return acc + curr / x.length;
+    }, 0);
+    const foo = parseInt(this.props.ticket.ticket.price);
+    console.log("cl", foo);
+    if (foo < y) {
+      const a = y - foo + this.state.risk;
+      const b = a > 95 ? 95 : a;
+      console.log("in", a);
+      return this.setState({
+        risk: b
+      });
+    } else if (foo > y) {
+      const z = foo - y;
+      const t = z > 10 ? 10 : z;
+      const u = t < 5 ? 5 : t;
+      return this.setState({
+        risk: u - this.state.risk
+      });
     }
   };
 
-  componentDidMount() {
-    console.log("this", this.props.ticket);
-    this.props.fetchTicket(Number(this.props.match.params.eventId));
-  }
-
   render() {
-    console.log("ticket b", this.props.event);
+    console.log("ticket b", this.state.risk);
     return (
       <div>
+        <p>{this.state.risk}</p>
+        <button onClick={this.riskCalculator}>Click</button>
         <TicketDetail
           ticket={this.props.ticket}
           user={this.props.user}
-          risk={this.props.riskCalculator}
-          riskState={this.state.risk}
           event={this.props.event}
         />
       </div>

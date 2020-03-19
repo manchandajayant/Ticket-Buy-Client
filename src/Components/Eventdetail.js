@@ -25,7 +25,7 @@ export default class Eventdetail extends Component {
                     {d.price}
                   </ul>
                   <p>
-                    <Link to={`/tickets/${d.eventId}`}>
+                    <Link to={`/tickets/${d.id}`}>
                       Click to open the Ticket
                     </Link>
                   </p>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import UserProfileContainer from "./UserProfileContainer";
+
+import CommentsContianer from "./CommentsContianer";
 
 export default class Ticketdetail extends Component {
   render() {
@@ -15,10 +15,7 @@ export default class Ticketdetail extends Component {
           <h3>{this.props.ticket.ticket.user.email}</h3>
           <img src={this.props.ticket.ticket.url} />
 
-          {/* <h3>
-            Risk for the Ticket
-            {() => this.props.riskCalculator()} %
-          </h3> */}
+          <CommentsContianer />
         </div>
       );
     }

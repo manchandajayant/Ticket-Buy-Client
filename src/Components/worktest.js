@@ -17,4 +17,6 @@ if (this.props.ticket.ticket.price < y) {
   return this.setState({
     risk: this.state.risk - z
   });
+} else if (this.props.ticket.ticket.user.tickets.length < 1) {
+  return this.setState({ risk: this.state.risk + 10 });
 }
