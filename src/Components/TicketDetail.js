@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./TicketDetail.css";
+import "../Components/CSS/Ticketdetail";
 
 import CommentsContianer from "./CommentsContianer";
 

@@ -22,7 +22,6 @@ class App extends Component {
             path="/events/:eventId/tickets/:id"
             component={TicketDetailContainer}
           />
-          <Route exact path="/users/:id" component={UserProfileContainer} />
           <Route exact path="/login" component={LoginFormContainer} />
           <Route path="/user/:id" component={UserProfileContainer} />
         </main>
