@@ -13,8 +13,11 @@ const newTicketCreated = ticket => ({
 });
 
 export const newTicket = data => (dispatch, getState) => {
+  const state = getState();
+  const { users } = state;
   request
     .post(`${baseUrl}/ticket`)
+    .set("Authorization", `Bearer ${users.auth}`)
     .send(data)
     .then(res => {
       const action = newTicketCreated(res.body);
