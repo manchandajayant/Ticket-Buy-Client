@@ -2,7 +2,7 @@ import { TICKETS_FETCHED, NEW_TICKET } from "../Actions/ticketActions";
 const initialState = [];
 
 export default function ticketsReducer(state = initialState, action) {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case TICKETS_FETCHED: {
       return action.payload;

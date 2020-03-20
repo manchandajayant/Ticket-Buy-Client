@@ -22,7 +22,7 @@ export class LoginFormContainer extends Component {
     });
   };
   render() {
-    console.log("user", this.props);
+    //console.log("user", this.props);
     if (this.props.user.auth) {
       return <Redirect to="/"></Redirect>;
     } else {

@@ -27,7 +27,7 @@ export class CommentsContianer extends Component {
     });
   };
   render() {
-    console.log("blue", this.props.ticket);
+    //console.log("blue", this.props.ticket);
     if (this.props.user.auth) {
       return (
         <div>

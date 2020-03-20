@@ -22,7 +22,7 @@ export const login = data => (dispatch, getState) => {
       .then(res => {
         const action = userLogin(res.body);
         dispatch(action);
-        console.log(res.body);
+        //console.log(res.body);
       })
       .catch(console.error);
   }
@@ -57,6 +57,7 @@ export const fetchUser = id => (dispatch, getState) => {
       console.log(res.body);
       const action = singleUser(res.body);
       dispatch(action);
+      //console.log(res.bodys);
     })
     .catch(console.error);
 };

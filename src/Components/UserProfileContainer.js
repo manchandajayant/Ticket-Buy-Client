@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 
 export class UserProfileContainer extends Component {
   componentDidMount() {
-    console.log("this", this.props.match.params.id);
     this.props.fetchUser(Number(this.props.match.params.id));
   }
   render() {
-    console.log("hi", this.props);
+    //console.log("hi", this.props);
     if (this.props.user) {
       return (
         <div>

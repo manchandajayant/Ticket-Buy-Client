@@ -19,7 +19,7 @@ class UpdateTicketForm extends Component {
 
     this.props.updateTicket(this.props.match.params.id, update);
 
-    console.log("submit test");
+    // console.log("submit test");
   };
 
   onChange = event => {
@@ -35,7 +35,7 @@ class UpdateTicketForm extends Component {
   };
 
   render() {
-    console.log("this.props.test:", this.props);
+    // console.log("this.props.test:", this.props);
 
     return (
       <form onSubmit={this.onSubmit}>

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../Components/CSS/Ticketdetail";
-
+import "../Components/CSS/ticketdetail.css";
 import CommentsContianer from "./CommentsContianer";
 
 export default class Ticketdetail extends Component {
   render() {
-    console.log("iindetail");
+    //console.log("indetail");
     if (!this.props.ticket) {
       return <h1>No TICKETS</h1>;
     } else {
@@ -20,9 +19,9 @@ export default class Ticketdetail extends Component {
               {this.props.ticket.ticket.user.email}
             </Link>
           </h3>
-          <img src={this.props.ticket.url} />
+          <img src={this.props.ticket.url} alt="Not Loading" />
 
-          <CommentsContianer ticket={this.props.ticket} />
+          <CommentsContianer />
         </div>
       );
     }

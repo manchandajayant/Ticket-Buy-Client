@@ -11,8 +11,6 @@ const newCommentCreated = comment => ({
 });
 
 export const newComment = data => (dispatch, getState) => {
-  const state = getState();
-  const { comment } = state;
   request
     .post(`${baseUrl}/comment`)
     .send(data)

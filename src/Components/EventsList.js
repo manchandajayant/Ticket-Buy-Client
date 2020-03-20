@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default class EventsList extends Component {
   render() {
-    console.log("from", this.props);
+    //console.log("from", this.props);
     if (!this.props.events) {
       return <h1>Loading....</h1>;
     } else {
@@ -16,7 +16,7 @@ export default class EventsList extends Component {
                 <Link to={`/events/${event.id}`}>{event.name}</Link>
               </h1>
               <h3>DESCRIPTION: {event.description}</h3>
-              <img src={event.url} />
+              <img src={event.url} alt="Not Loading" />
             </div>
           ))}
         </div>

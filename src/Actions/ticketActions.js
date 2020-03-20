@@ -13,8 +13,6 @@ const newTicketCreated = ticket => ({
 });
 
 export const newTicket = data => (dispatch, getState) => {
-  const state = getState();
-  const { ticket } = state;
   request
     .post(`${baseUrl}/ticket`)
     .send(data)
@@ -71,7 +69,7 @@ export const updateTicket = (id, data) => (dispatch, getState) => {
     .send(data)
     .then(res => {
       const action = ticketUpdated(res.body);
-      console.log("PATCH RESPONSE", res.body);
+      // console.log("PATCH RESPONSE", res.body);
       dispatch(action);
     })
     .catch(console.error);

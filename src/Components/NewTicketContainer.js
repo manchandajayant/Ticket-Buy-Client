@@ -31,7 +31,7 @@ export class CreateNewEventContainer extends Component {
     });
   };
   render() {
-    console.log("in new", this.props);
+    // console.log("in new", this.props);
 
     return (
       <div>
@@ -46,7 +46,8 @@ export class CreateNewEventContainer extends Component {
 }
 const mapStateToProps = state => ({
   user: state.users,
-  ticket: state.ticket
+  ticket: state.ticket,
+  event: state.event
 });
 
 const mapDispatchToProps = {

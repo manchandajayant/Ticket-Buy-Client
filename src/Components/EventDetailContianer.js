@@ -11,7 +11,7 @@ export class EventDetailContainer extends Component {
     this.props.fetchEvent(Number(this.props.match.params.id));
   }
   render() {
-    console.log("det", this.props);
+    // console.log("det", this.props);
 
     if (!this.props.user.auth) {
       return (
@@ -25,10 +25,7 @@ export class EventDetailContainer extends Component {
           {" "}
           <EventDetail event={this.props.event} ticket={this.props.ticket} />
           <div>
-            <NewTicketContainer
-              event={this.props.event}
-              ticket={this.props.ticket}
-            />
+            <NewTicketContainer ticket={this.props.ticket} />
           </div>
         </div>
       );
