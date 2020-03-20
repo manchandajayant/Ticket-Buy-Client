@@ -58,7 +58,8 @@ export class CommentsContianer extends Component {
 
 const mapStateToProps = state => ({
   ticket: state.ticket,
-  user: state.users
+  user: state.users,
+  comment: state.comments
 });
 
 const mapDispatchToProps = {

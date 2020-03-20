@@ -13,7 +13,7 @@ export default class Ticketdetail extends Component {
         <div>
           <Link to={`/events/${this.props.ticket.ticket.eventId}`}>BACK</Link>
           <h1>PRICE:{this.props.ticket.ticket.price}</h1>
-          <h2>DETAILS:{this.props.ticket.description}</h2>
+          <h2>DETAILS:{this.props.ticket.ticket.description}</h2>
           <h3>
             <Link to={`/user/${this.props.ticket.ticket.user.id}`}>
               {this.props.ticket.ticket.user.email}
