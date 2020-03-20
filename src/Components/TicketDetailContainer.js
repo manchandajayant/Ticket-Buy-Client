@@ -15,7 +15,6 @@ export class TicketDetailContainer extends Component {
   componentDidMount() {
     console.log("this", this.props);
     this.props.fetchTicket(Number(this.props.match.params.id));
-    // this.props.showAllTickets();
   }
 
   riskCalculator = () => {
@@ -26,8 +25,9 @@ export class TicketDetailContainer extends Component {
       console.log("avg", x);
       return acc + curr / x.length;
     }, 0);
+    console.log("y", y);
     const ticketPrice = parseInt(this.props.ticket.ticket.price);
-
+    console.log("comments llength", this.props.ticket.ticket.comments.length);
     console.log("cl", ticketPrice);
     if (ticketPrice < y) {
       this.state.riskByAverage = y - ticketPrice;
@@ -78,7 +78,7 @@ export class TicketDetailContainer extends Component {
 
 const mapStateToProps = state => ({
   ticket: state.ticket,
-  user: state.users.fetchedUser,
+  user: state.users,
   event: state.event
 });
 

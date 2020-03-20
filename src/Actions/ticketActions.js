@@ -3,6 +3,7 @@ import request from "superagent";
 export const NEW_TICKET = "NEW_TICKET";
 export const FETCH_TICKET = "FETCH_TICKET";
 export const TICKETS_FETCHED = "TICKETS_FETCHED";
+export const UPDATE_TICKET = "UPDATE_TICKET";
 
 const baseUrl = "http://localhost:4000";
 
@@ -51,6 +52,26 @@ export const showAllTickets = () => dispatch => {
   request(`${baseUrl}/ticket`)
     .then(res => {
       const action = allTicketsFetched(res.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
+export const ticketUpdated = id => {
+  return {
+    type: UPDATE_TICKET,
+    payload: id
+  };
+};
+
+export const updateTicket = (id, data) => (dispatch, getState) => {
+  console.log("UPDATE EVENT ACTION", data);
+  request
+    .put(`${baseUrl}/event/${id}`)
+    .send(data)
+    .then(res => {
+      const action = ticketUpdated(res.body);
+      console.log("PATCH RESPONSE", res.body);
       dispatch(action);
     })
     .catch(console.error);

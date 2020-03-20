@@ -8,6 +8,7 @@ export default function eventReducer(state = initialState, action) {
       console.log("new", action.payload);
       return { event: action.payload };
     }
+
     default: {
       return state;
     }

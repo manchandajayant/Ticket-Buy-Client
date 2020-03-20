@@ -31,37 +31,9 @@ export default class Eventdetail extends Component {
                     </Link>
                   </li>
                 </ul>
-                {/* <p>{a.user.email}</p> */}
+                {/* <p>{a.user}</p> */}
               </div>
             ))}
-
-            {/* <p>{b.id}</p> */}
-
-            {/* <p>{b.price}</p> */}
-            {/* {this.props.ticket.map(n=> {
-              const nfilter(new=>new.id==this.props.event.event.id)
-            <p>{}</p>
-            })} */}
-
-            {/* {bl.map(tick => (
-              <p>{tick.price}</p>
-            ))} */}
-
-            {/* {this.props.event.event.tickets.map(d => {
-              return (
-                <li>
-                  <ul>
-                    <Link to={`/users/${d.userId}`}>Ticket by</Link>
-                    {d.price}
-                  </ul>
-                  <p>
-                    <Link to={`/tickets/${d.id}`}>
-                      Click to open the Ticket
-                    </Link>
-                  </p>
-                </li>
-              );
-            })} */}
           </div>
         </div>
       );

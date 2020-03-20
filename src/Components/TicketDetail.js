@@ -5,7 +5,7 @@ import CommentsContianer from "./CommentsContianer";
 
 export default class Ticketdetail extends Component {
   render() {
-    console.log("iindetail", this.props);
+    console.log("iindetail");
     if (!this.props.ticket) {
       return <h1>No</h1>;
     } else {
