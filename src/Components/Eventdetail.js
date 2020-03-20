@@ -21,13 +21,13 @@ export default class Eventdetail extends Component {
           <h4>END DATE: {this.props.event.event.endDate}</h4>
 
           <div>
-            <h1>{this.props.event.event.name}</h1>
+            <h1>TICKETS</h1>
             {b.map(a => (
               <div>
                 <ul>
                   <li>
                     <Link to={`/events/${a.eventId}/tickets/${a.id}`}>
-                      PRICE - {a.price} BY USER - {a.userId}
+                      PRICE - {a.price} BY USER ID - {a.userId}
                     </Link>
                   </li>
                 </ul>
