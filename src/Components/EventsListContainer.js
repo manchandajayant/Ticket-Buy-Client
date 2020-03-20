@@ -15,8 +15,10 @@ export class EventsListContainer extends Component {
     if (!this.props.user.auth) {
       return (
         <div>
+          <div>
+            <Link to="/login">Login to Add a Ticket</Link>
+          </div>
           <EventsList events={this.props.events} />
-          <Link to="/login">Login to Add a Ticket</Link>
         </div>
       );
     } else {

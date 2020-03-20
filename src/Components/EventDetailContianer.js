@@ -24,10 +24,12 @@ export class EventDetailContainer extends Component {
         <div>
           {" "}
           <EventDetail event={this.props.event} ticket={this.props.ticket} />
-          <NewTicketContainer
-            event={this.props.event}
-            ticket={this.props.ticket}
-          />
+          <div>
+            <NewTicketContainer
+              event={this.props.event}
+              ticket={this.props.ticket}
+            />
+          </div>
         </div>
       );
     }

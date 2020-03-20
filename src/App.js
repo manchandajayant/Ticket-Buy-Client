@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <main>
-          Hello
+          WELCOME TO THIS TICKET WEBSITE FOR ALL THE ODD EVENTS
           <Route exact path="/" component={EventsListContainer} />
           <Route exact path="/signup" component={SignUpFormContainer} />
           <Route exact path="/events/:id" component={EventDetailContainer} />

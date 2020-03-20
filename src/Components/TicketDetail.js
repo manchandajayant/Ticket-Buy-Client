@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./TicketDetail.css";
 
 import CommentsContianer from "./CommentsContianer";
 
@@ -7,7 +8,7 @@ export default class Ticketdetail extends Component {
   render() {
     console.log("iindetail");
     if (!this.props.ticket) {
-      return <h1>No</h1>;
+      return <h1>No TICKETS</h1>;
     } else {
       return (
         <div>

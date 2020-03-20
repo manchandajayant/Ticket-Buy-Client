@@ -14,6 +14,7 @@ export default class Eventdetail extends Component {
       return (
         <div>
           <Link to="/">HOMEPAGE</Link>
+
           <h1>{this.props.event.event.name}</h1>
           <h3>DESCRIPTION: {this.props.event.event.description}</h3>
           <img src={this.props.event.event.url} />
