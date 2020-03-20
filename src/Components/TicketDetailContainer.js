@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTicket } from "../Actions/ticketActions";
+import { fetchTicket, showAllTickets } from "../Actions/ticketActions";
 import { fetchUser } from "../Actions/userActions";
 
 import TicketDetail from "./TicketDetail";
@@ -15,6 +15,7 @@ export class TicketDetailContainer extends Component {
   componentDidMount() {
     console.log("this", this.props);
     this.props.fetchTicket(Number(this.props.match.params.id));
+    // this.props.showAllTickets();
   }
 
   riskCalculator = () => {
@@ -58,7 +59,7 @@ export class TicketDetailContainer extends Component {
   };
 
   render() {
-    //console.log("ticket b", this.props.ticket);
+    console.log("ticket b", this.props);
     return (
       <div>
         <p>Risk = {this.state.risk} %</p>
@@ -83,7 +84,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchTicket,
-  fetchUser
+  fetchUser,
+  showAllTickets
 };
 
 export default connect(

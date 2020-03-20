@@ -10,18 +10,19 @@ export class EventsListContainer extends Component {
     this.props.showAllEvents();
   }
   render() {
-    console.log("to", this.props.events);
+    console.log("to", this.props);
+
     if (!this.props.user.auth) {
       return (
         <div>
-          <EventsList events={this.props.events.eventsList} />
+          <EventsList events={this.props.events} />
           <Link to="/login">Login to Add a Ticket</Link>
         </div>
       );
     } else {
       return (
         <div>
-          <EventsList events={this.props.events.eventsList} />
+          <EventsList events={this.props.events} />
           <CreateNewEventContainer />
         </div>
       );

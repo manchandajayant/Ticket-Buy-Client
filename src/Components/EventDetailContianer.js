@@ -1,28 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEvent } from "../Actions/eventActions";
+import { showAllTickets } from "../Actions/ticketActions";
 import EventDetail from "./Eventdetail";
 import NewTicketContainer from "./NewTicketContainer";
 
 export class EventDetailContainer extends Component {
   componentDidMount() {
+    this.props.showAllTickets();
     this.props.fetchEvent(Number(this.props.match.params.id));
-    console.log("this", this.props.event);
   }
   render() {
-    console.log("det", this.props.event);
+    console.log("det", this.props);
+
     if (!this.props.user.auth) {
       return (
         <div>
-          <EventDetail event={this.props.event} />
+          <EventDetail event={this.props.event} ticket={this.props.ticket} />
         </div>
       );
     } else {
       return (
         <div>
           {" "}
-          <EventDetail event={this.props.event} />
-          <NewTicketContainer event={this.props.event} />
+          <EventDetail event={this.props.event} ticket={this.props.ticket} />
+          <NewTicketContainer
+            event={this.props.event}
+            ticket={this.props.ticket}
+          />
         </div>
       );
     }
@@ -31,11 +36,13 @@ export class EventDetailContainer extends Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  user: state.users
+  user: state.users,
+  ticket: state.tickets
 });
 
 const mapDispatchToProps = {
-  fetchEvent
+  fetchEvent,
+  showAllTickets
 };
 
 export default connect(
